@@ -40,7 +40,7 @@ RUN  apt-get update \
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
 RUN service procps restart 2>/dev/null || service procps-ng restart 2>/dev/null || true
 RUN echo '738a79fb44c24312b9c20910c18c0963' >> /etc/machine-id
-
+# RUN google-chrome-stable --product-version | echo
 
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
