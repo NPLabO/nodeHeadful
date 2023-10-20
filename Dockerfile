@@ -41,9 +41,9 @@ RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.co
 RUN service procps restart 2>/dev/null || service procps-ng restart 2>/dev/null || true
 RUN echo '738a79fb44c24312b9c20910c18c0963' >> /etc/machine-id
 RUN truncate -s 0 /etc/apt/sources.list.d/google.list \
-     apt-get update \
-     apt-get install -y python3-pip \
-     pip3 install filetype rarfile --break-system-packages
+     && apt-get update \
+     && apt-get install -yq python3-pip \
+     && pip3 install filetype rarfile --break-system-packages
 # RUN google-chrome-stable --product-version | echo
 
 
