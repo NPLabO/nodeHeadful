@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:20.8.1
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 WORKDIR /home/nodeHeadful
@@ -18,7 +18,9 @@ COPY fonts.conf ~/.config/fontconfig
 COPY init.sh .
 
 RUN  apt-get update \
-     && apt-get install xdg-user-dirs -yq
+     && apt-get install xdg-user-dirs -yq \
+     && apt-get install -yq python3-pip \
+     && pip3 install filetype rarfile --break-system-packages
 
 RUN  apt-get update \
      && apt-get install -yq wget curl gnupg libgconf-2-4 ca-certificates wget xvfb dbus dbus-x11 build-essential --no-install-recommends \
@@ -40,10 +42,10 @@ RUN  apt-get update \
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
 RUN service procps restart 2>/dev/null || service procps-ng restart 2>/dev/null || true
 RUN echo '738a79fb44c24312b9c20910c18c0963' >> /etc/machine-id
-RUN truncate -s 0 /etc/apt/sources.list.d/google.list \
-     && apt-get update \
-     && apt-get install -yq python3-pip \
-     && pip3 install filetype rarfile --break-system-packages
+# RUN truncate -s 0 /etc/apt/sources.list.d/google.list \
+#      && apt-get update \
+#      && apt-get install -yq python3-pip \
+#      && pip3 install filetype rarfile --break-system-packages
 # RUN google-chrome-stable --product-version | echo
 
 
