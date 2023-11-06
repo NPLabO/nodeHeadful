@@ -15,7 +15,10 @@ RUN chown -R nodeHeadful:nodeHeadful /home/nodeHeadful
 
 RUN mkdir -p ~/.config/fontconfig
 COPY fonts.conf ~/.config/fontconfig
+COPY startXvfb.sh .
 COPY init.sh .
+COPY initXvfb.sh .
+COPY xvfb.service /etc/systemd/system/xvfb.service
 
 RUN  apt-get update \
      && apt-get install xdg-user-dirs -yq \
@@ -54,5 +57,7 @@ ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/google-chrome-stable
 ENV PUPPETEER_EXEC_PATH /usr/bin/google-chrome-stable
 # google-chrome-stable
 ENV DISPLAY :99
+
+RUN ./initXvfb.sh
 
 # CMD ["/bin/bash", "init.sh"]
