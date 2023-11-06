@@ -1,0 +1,26 @@
+# Copy this service to /etc/systemd/system/xvfb.service
+
+# Reload the systemd configuration to make the new service available:
+# sudo systemctl daemon-reload
+
+# Start the Xvfb service:
+# sudo systemctl start xvfb
+
+# Enable the service to start on boot:
+# sudo systemctl enable xvfb
+
+# You can check the status of the service to ensure that it's running:
+# sudo systemctl status xvfb
+
+[Unit]
+Description=X Virtual Frame Buffer
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/Xvfb :99 -ac -screen 0 1280x1024x16
+Restart=always
+User=nodeHeadful  # Replace with the appropriate user
+Group=nodeHeadful    # Replace with the appropriate group
+
+[Install]
+WantedBy=multi-user.target
