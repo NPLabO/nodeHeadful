@@ -1,3 +1,10 @@
-docker-mirror-packages-repo
--e git+https://github.com/gdraheim/docker-mirror-packages-repo.git
-
+docx==0.2.4
+lxml==4.5.2
+pdfrw==0.4
+Pillow==7.2.0
+python-docx==0.8.10
+xlrd==1.2.0
+xxhash==2.0.0
+tabula-py==2.2.0
+pdfminer.six==20181108
+chardet==3.0.4

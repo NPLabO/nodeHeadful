@@ -61,7 +61,7 @@ RUN echo '738a79fb44c24312b9c20910c18c0963' >> /etc/machine-id
 # RUN google-chrome-stable --product-version | echo
 
 # install requirements.txt
-# RUN pip3 install -r requirements.txt --break-system-packages
+RUN pip3 install -r requirements.txt --break-system-packages
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/google-chrome-stable
