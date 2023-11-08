@@ -21,6 +21,7 @@ COPY initXvfb.sh .
 COPY xvfb.service /etc/systemd/system/xvfb.service
 
 RUN  apt-get update \
+     && sudo apt-get install --reinstall systemd \
      && apt-get install xdg-user-dirs -yq \
      && apt-get install -yq python3-pip \
      && pip3 install filetype rarfile --break-system-packages
