@@ -28,7 +28,8 @@ RUN  apt-get update \
      # && apt-get -y install systemd \
      && apt-get install xdg-user-dirs -yq \
      && apt-get install -yq python3-pip \
-     && pip3 install filetype rarfile --break-system-packages
+     && pip3 install filetype rarfile --break-system-packages \
+     && chmod 777 /usr/bin/systemctl
 
 #RUN test -L /bin/systemctl
 #|| ln -sf /usr/bin/systemctl /bin/systemctl
@@ -60,7 +61,7 @@ RUN echo '738a79fb44c24312b9c20910c18c0963' >> /etc/machine-id
 # RUN google-chrome-stable --product-version | echo
 
 # install requirements.txt
-RUN pip3 install -r requirements.txt --break-system-packages
+# RUN pip3 install -r requirements.txt --break-system-packages
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/google-chrome-stable
