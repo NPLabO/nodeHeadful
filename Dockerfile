@@ -27,7 +27,7 @@ COPY xvfb.service /etc/systemd/system/xvfb.service
 RUN  apt-get update \
      # && apt-get -y install systemd \
      && apt-get install xdg-user-dirs -yq \
-     && apt-get install -yq python3-pip \
+     && apt-get install -yq python3-pip python3-dev libxml2-dev libxslt1-dev \
      && pip3 install filetype rarfile --break-system-packages \
      && chmod 777 /usr/bin/systemctl
 
