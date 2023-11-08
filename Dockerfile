@@ -58,6 +58,6 @@ ENV PUPPETEER_EXEC_PATH /usr/bin/google-chrome-stable
 # google-chrome-stable
 ENV DISPLAY :99
 
-RUN ./initXvfb.sh
+RUN bash initXvfb.sh
 
 # CMD ["/bin/bash", "init.sh"]
