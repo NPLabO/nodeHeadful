@@ -27,7 +27,7 @@ RUN  apt-get update \
      && apt-get install -yq python3-pip \
      && pip3 install filetype rarfile --break-system-packages
 
-RUN test -L /bin/systemctl
+#RUN test -L /bin/systemctl
 #|| ln -sf /usr/bin/systemctl /bin/systemctl
 
 RUN  apt-get update \
