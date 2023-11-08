@@ -12,12 +12,14 @@
 # You can check the status of the service to ensure that it's running:
 # sudo systemctl status xvfb
 
+# /usr/bin/Xvfb -ac :99 -screen 0 1280x1024x16 > /dev/null 2>&1 &
+
 [Unit]
 Description=X Virtual Frame Buffer
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/Xvfb -ac :99 -screen 0 1280x1024x16
+ExecStart=/usr/bin/Xvfb -ac :99 -screen 0 1280x1024x16 > /dev/null 2>&1
 Restart=always
 User=nodeHeadful
 Group=nodeHeadful
