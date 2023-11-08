@@ -18,7 +18,9 @@ COPY fonts.conf ~/.config/fontconfig
 COPY startXvfb.sh .
 COPY init.sh .
 COPY initXvfb.sh .
-COPY systemctl3.py /usr/bin/systemctl
+# COPY systemctl3.py /usr/bin/systemctl
+# COPY journalctl3.py /usr/bin/journalctl
+COPY systemctl.py /usr/bin/systemctl
 COPY xvfb.service /etc/systemd/system/xvfb.service
 
 RUN  apt-get update \
