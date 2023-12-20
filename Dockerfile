@@ -1,4 +1,4 @@
-FROM node:20.8.1
+FROM node:20.10.0
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 WORKDIR /home/nodeHeadful
@@ -46,6 +46,7 @@ RUN  apt-get update \
      && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 
 RUN  apt-get update \
+     && echo "arch=$(echo $TARGETPLATFORM | awk -F/ '{print $2}')" \
      && echo "deb [arch=$(echo $TARGETPLATFORM | awk -F/ '{print $2}')] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
      && apt-get update \
      && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 --no-install-recommends \

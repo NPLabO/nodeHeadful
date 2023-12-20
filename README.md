@@ -1,7 +1,7 @@
 # Node Headful
 
 ```bash
-docker build --platform linux/amd64 -t <user>/nodeheadful .
+docker build --platform linux/amd64 -t nplab/nodeheadful .
 ```
 
 Container
