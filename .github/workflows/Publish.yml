@@ -12,6 +12,8 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@main
+            - name: LS
+              run: ls
             - id: repositoryName
               uses: ASzc/change-string-case-action@v1
               with:
