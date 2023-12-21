@@ -1,0 +1,22 @@
+name: Publish
+
+on: 
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@main
+            - name: Build Image and Push
+              uses: judahh/dockerBuildAndPublish@main
+              with: 
+                username: ${{ secrets.DOCKER_HUB_USERNAME }}
+                password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+                name: ${{ github.event.repository.name }}
+                production: true
+                platforms: linux/amd64
