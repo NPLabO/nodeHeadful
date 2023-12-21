@@ -20,11 +20,17 @@ jobs:
               uses: ASzc/change-string-case-action@v1
               with:
                 string: ${{ github.event.repository.name }}
-            - name: Build Image and Push
-              uses: judahh/dockerBuildAndPublish@main
-              with: 
+            - name: Login to DockerHub
+              uses: docker/login-action@v1 
+              with:
                 username: ${{ secrets.DOCKER_HUB_USERNAME }}
                 password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-                name: ${{ steps.repositoryName.outputs.lowercase }}
-                production: true
+            - name: Build and push PRODUCT
+              id: docker_build_product
+              uses: docker/build-push-action@v2
+              with:
                 platforms: linux/amd64
+                context: ./
+                file: ./Dockerfile
+                push: true
+                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.repositoryName.outputs.lowercase }}:latest
