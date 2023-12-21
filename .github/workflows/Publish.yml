@@ -15,7 +15,7 @@ jobs:
             - name: LS
               run: ls
             - name: CAT Dockerfile
-              run: cat Dockerfile
+              run: cat ../Dockerfile
             - id: repositoryName
               uses: ASzc/change-string-case-action@v1
               with:
